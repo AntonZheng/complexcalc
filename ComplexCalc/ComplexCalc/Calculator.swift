@@ -10,6 +10,7 @@ import Foundation
 
 // All your work will go in here
 class Calculator {
+    
     func add(lhs: Int, rhs: Int) -> Int {
         return lhs + rhs
     }
@@ -26,6 +27,10 @@ class Calculator {
         return (lhs.0 + rhs.0, lhs.1 + rhs.1)
     }
     
+    func add(lhs:[String: Int], rhs:[String: Int]) -> [String: Int] {
+        return ["x": lhs["x"]! + rhs["x"]!,"y": lhs["y"]! + rhs["y"]!]
+    }
+    
     func subtract(lhs: Int, rhs: Int) -> Int {
         return lhs - rhs
     }
@@ -34,13 +39,17 @@ class Calculator {
         return (lhs.0 - rhs.0, lhs.1 - rhs.1)
     }
     
+    func subtract(lhs:[String: Int], rhs:[String: Int]) -> [String: Int] {
+        return ["x": lhs["x"]! - rhs["x"]!,"y": lhs["y"]! - rhs["y"]!]
+    }
+    
     func multiply(lhs: Int, rhs: Int) -> Int {
         return lhs * rhs
     }
     
     func multiply(_ args: [Int]) -> Int{
-        var result = 0
-        for i in 0...(args.count-1) {
+        var result = args[0]
+        for i in 1...(args.count-1) {
             result *= args[i]
         }
         return result
@@ -51,11 +60,7 @@ class Calculator {
     }
     
     func count(_ args: [Int]) -> Int{
-        var result = 0
-        for _ in 0...(args.count-1) {
-            result += 1
-        }
-        return result
+        return args.count
     }
     
     func avg(_ args: [Int]) -> Int{
